@@ -5,13 +5,12 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CamelCopy extends RouteBuilder {
+public class CamelCopy  {
 
-    @Override
+    //@Override
     public void configure() {
 //        from("file://plikwe?noop=true").to("file://plikwy");
-        from("timer:foo?period=5000")
-                .to("log:bar");
+        //from("timer:foo?period=5000")                .to("log:bar");
     }
 
 }
