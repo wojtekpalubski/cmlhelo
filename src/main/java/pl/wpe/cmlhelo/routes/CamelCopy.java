@@ -1,7 +1,5 @@
-package pl.wpe.cmlhelo;
+package pl.wpe.cmlhelo.routes;
 
-import org.apache.camel.CamelContext;
-import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package pl.wpe.cmlhelo;
+package pl.wpe.cmlhelo.routes;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class CamelFileCopy extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        from("file://plikwe.txt?noop=true").to("file://plikwy.txt?fileExist=Override");
+        from("file:plikwe.txt?noop=true")
+                .to("file:plikwy.txt?fileExist=Override");
     }
 }

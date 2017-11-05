@@ -9,6 +9,4 @@ public class CmlheloApplication {
     public static void main(String[] args) {
         SpringApplication.run(CmlheloApplication.class, args);
     }
-
-
 }
