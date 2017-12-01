@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class CamelXMLRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
+    	System.out.println("Startuje CamelXMLRoute");
         from("file:we")
                 .log("Receiving order ${file:name}")
                 .choice()
