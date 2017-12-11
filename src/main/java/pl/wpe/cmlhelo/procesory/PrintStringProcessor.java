@@ -13,7 +13,7 @@ public class PrintStringProcessor implements Processor {
     }
     public void process(Exchange exchange) throws InterruptedException {
         Thread.sleep(slip);
-        System.out.println("-="+exchange.getIn().getBody(String.class));
+//        System.out.println("-="+exchange.getIn().getBody(String.class));
 
     }
 }

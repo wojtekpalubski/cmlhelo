@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import pl.wpe.cmlhelo.procesory.NumerujWierszeProcessor;
 
-@Component
-public class CamelWyswietlPliki extends RouteBuilder{
+//@Component
+public class CamelWyswietlPlikiRoute extends RouteBuilder{
 
 	@Override
 	public void configure() throws Exception {

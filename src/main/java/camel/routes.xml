@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes id="routes-f131486c-273e-4046-8ce2-4b58dccaa12b" xmlns="http://camel.apache.org/schema/spring">
+<!--     <route id="getVersionApi">
+        <from id="timerID" uri="timer:pobierzWersjeApiTimer?period=25s"/>
+        <setHeader headerName="operationName" id="setHeaderID">
+            <constant>PobierzWersjeApi</constant>
+        </setHeader>
+        <to id="svcID" uri="cxf:bean:versionApiEndpoint"/>
+    </route>
+    <route id="logowacz">
+        <from id="timerID2" uri="timer:pobierzWersjeApiTimer?period=25s"/>
+        <setHeader headerName="operationName" id="setHeaderID2">
+            <constant>PobierzWersjeApi</constant>
+        </setHeader>
+        <to id="svcID2" uri="log:tresc"/>
+    </route> -->
+</routes>

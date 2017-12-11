@@ -3,8 +3,8 @@ package pl.wpe.cmlhelo.routes;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
-public class CamelFileMove extends RouteBuilder {
+//@Component
+public class CamelFileMoveRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		System.out.println("Startuje CamelFileMove");

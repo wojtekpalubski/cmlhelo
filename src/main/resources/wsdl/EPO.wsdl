@@ -1,0 +1,1585 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ms.gov.pl/msepo" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	name="EpoService" targetNamespace="http://ms.gov.pl/msepo">
+	<wsp:Policy wsu:Id="EpoWebService_policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:TransportBinding
+					xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken RequireClientCertificate="false" />
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256 />
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict />
+							</wsp:Policy>
+						</sp:Layout>
+					</wsp:Policy>
+				</sp:TransportBinding>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://ms.gov.pl/msepo/Imports">
+			<xsd:import schemaLocation="https://saepo:9023/EpoService.svc?xsd=xsd0"
+				namespace="http://ms.gov.pl/msepo" />
+			<xsd:import schemaLocation="https://saepo:9023/EpoService.svc?xsd=xsd3"
+				namespace="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes" />
+			<xsd:import schemaLocation="https://saepo:9023/EpoService.svc?xsd=xsd1"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import schemaLocation="https://saepo:9023/EpoService.svc?xsd=xsd2"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			<xsd:import schemaLocation="https://saepo:9023/EpoService.svc?xsd=xsd4"
+				namespace="http://schemas.datacontract.org/2004/07/Domain.Types" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoNumerachNadawczych" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoNumerachNadawczychResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q1="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q1:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_PrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q2="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q2:PrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoNumerachNadawczychShort" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoNumerachNadawczychShortResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q3="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q3:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_PrzesylkiOutputShortDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q4="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q4:PrzesylkiOutputShortData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidach_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekPoGuidach" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidach_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoGuidachResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidach_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q5="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q5:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidach_PrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q6="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q6:PrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekPoGuidachShort" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoGuidachShortResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_PrzesylkiOutputShortDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q7="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q7:PrzesylkiOutputShortData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q8="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q8:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekZaOkres_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekZaOkres" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekZaOkres_OutputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekZaOkresResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekZaOkres_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q9="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q9:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekZaOkres_PrzesylkiOutputShortDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q10="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q10:PrzesylkiOutputShortData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzGuidyPrzesylekZaOkres_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzGuidyPrzesylekZaOkres" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzGuidyPrzesylekZaOkres_OutputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzGuidyPrzesylekZaOkresResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzGuidyPrzesylekZaOkres_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q11="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q11:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzGuidyPrzesylekZaOkres_GuidOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q12="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q12:GuidOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzNumeryNadawczePrzesylekZaOkres" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzNumeryNadawczePrzesylekZaOkresResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q13="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q13:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_NumerNadawczyOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q14="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q14:NumerNadawczyOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzStatusyPrzesylek_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylek" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzStatusyPrzesylek_OutputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylek_PrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q15="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q15:PrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylek_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q16="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q16:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoNumerachNadawczychXml" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoNumerachNadawczychXmlResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_PrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q17="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q17:PrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q18="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q18:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekPoGuidachXml" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzStatusyPrzesylekPoGuidachXmlResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q19="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q19:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_PrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q20="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q20:PrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzStatusyPrzesylekXml_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekXml" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzStatusyPrzesylekXml_OutputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzStatusyPrzesylekXmlResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekXml_PrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q21="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q21:PrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzStatusyPrzesylekXml_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q22="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q22:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoNumerzeNadawczym" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoNumerzeNadawczymResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_HistoriaPrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q23="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q23:HistoriaPrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q24="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q24:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkresResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_HistoriaPrzesylkiOutputDataExtendFault_FaultMessage">
+		<wsdl:part
+			xmlns:q25="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q25:HistoriaPrzesylkiOutputDataExtend" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q26="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q26:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoGuidPrzesylki" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoGuidPrzesylkiResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_HistoriaPrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q27="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q27:HistoriaPrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q28="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q28:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoNumerzeNadawczymXml" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoNumerzeNadawczymXmlResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q29="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q29:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_HistoriaPrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q30="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q30:HistoriaPrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoGuidPrzesylkiXml" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzHistoriePrzesylkiPoGuidPrzesylkiXmlResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_HistoriaPrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q31="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q31:HistoriaPrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q32="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q32:OutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_ImportZbioruEkn_InputMessage">
+		<wsdl:part name="parameters" element="tns:ImportZbioruEkn" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_ImportZbioruEkn_OutputMessage">
+		<wsdl:part name="parameters" element="tns:ImportZbioruEknResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_ImportZbioruEkn_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q33="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q33:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_ImportZbioruEkn_ImportZbiorEknOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q34="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q34:ImportZbiorEknOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_ImportZbioruEknBase64_InputMessage">
+		<wsdl:part name="parameters" element="tns:ImportZbioruEknBase64" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_ImportZbioruEknBase64_OutputMessage">
+		<wsdl:part name="parameters" element="tns:ImportZbioruEknBase64Response" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_ImportZbioruEknBase64_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q35="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q35:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_ImportZbioruEknBase64_ImportZbiorEknOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q36="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q36:ImportZbiorEknOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_ImportZbioruEknZip_InputMessage">
+		<wsdl:part name="parameters" element="tns:ImportZbioruEknZip" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_ImportZbioruEknZip_OutputMessage">
+		<wsdl:part name="parameters" element="tns:ImportZbioruEknZipResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_ImportZbioruEknZip_ImportZbiorEknOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q37="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q37:ImportZbiorEknOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_ImportZbioruEknZip_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q38="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q38:OutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_NadanieZbioruEknZip_InputMessage">
+		<wsdl:part name="parameters" element="tns:NadanieZbioruEknZip" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_NadanieZbioruEknZip_OutputMessage">
+		<wsdl:part name="parameters" element="tns:NadanieZbioruEknZipResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_NadanieZbioruEknZip_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q39="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q39:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_NadanieZbioruEknZip_NadajZbiorEknOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q40="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q40:NadajZbiorEknOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_NadanieZbioruEkn_InputMessage">
+		<wsdl:part name="parameters" element="tns:NadanieZbioruEkn" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_NadanieZbioruEkn_OutputMessage">
+		<wsdl:part name="parameters" element="tns:NadanieZbioruEknResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_NadanieZbioruEkn_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q41="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q41:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_NadanieZbioruEkn_NadajZbiorEknOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q42="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q42:NadajZbiorEknOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_NadanieZbioruEknBase64_InputMessage">
+		<wsdl:part name="parameters" element="tns:NadanieZbioruEknBase64" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_NadanieZbioruEknBase64_OutputMessage">
+		<wsdl:part name="parameters" element="tns:NadanieZbioruEknBase64Response" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_NadanieZbioruEknBase64_NadajZbiorEknOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q43="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q43:NadajZbiorEknOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_NadanieZbioruEknBase64_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q44="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q44:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczychResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q45="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q45:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_ListaDoreczenPdfOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q46="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q46:ListaDoreczenPdfOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzPdfPotwierdzeniaDoreczenPoGuidach" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzPdfPotwierdzeniaDoreczenPoGuidachResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q47="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q47:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_ListaDoreczenPdfOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q48="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q48:ListaDoreczenPdfOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczychResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q49="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q49:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_ListaDoreczenPdfOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q50="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q50:ListaDoreczenPdfOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_InputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzXmlPotwierdzeniaDoreczenPoGuidach" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_OutputMessage">
+		<wsdl:part name="parameters"
+			element="tns:PobierzXmlPotwierdzeniaDoreczenPoGuidachResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_ListaDoreczenPdfOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q51="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q51:ListaDoreczenPdfOutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q52="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q52:OutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzKodyPocztowe_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzKodyPocztowe" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzKodyPocztowe_OutputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzKodyPocztoweResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzKodyPocztowe_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q53="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q53:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzKodyPocztowe_KodPocztowyOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q54="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q54:KodPocztowyOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzListeStatusowPrzesylek_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzListeStatusowPrzesylek" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzListeStatusowPrzesylek_OutputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzListeStatusowPrzesylekResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzListeStatusowPrzesylek_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q55="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q55:OutputData" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzListeStatusowPrzesylek_StatusPrzesylkiOutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q56="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q56:StatusPrzesylkiOutputData" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzWersjeApi_InputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzWersjeApi" />
+	</wsdl:message>
+	<wsdl:message name="IEpoContract_PobierzWersjeApi_OutputMessage">
+		<wsdl:part name="parameters" element="tns:PobierzWersjeApiResponse" />
+	</wsdl:message>
+	<wsdl:message
+		name="IEpoContract_PobierzWersjeApi_OutputDataFault_FaultMessage">
+		<wsdl:part
+			xmlns:q57="http://schemas.datacontract.org/2004/07/EpoWSLib.DataTypes"
+			name="detail" element="q57:OutputData" />
+	</wsdl:message>
+	<wsdl:portType name="IEpoContract">
+		<wsdl:operation name="PobierzStatusyPrzesylekPoNumerachNadawczych">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczych"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychPrzesylkiOutputDataFault"
+				name="PrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczych_PrzesylkiOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoNumerachNadawczychShort">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychShort"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychShortResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychShortOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychShortPrzesylkiOutputShortDataFault"
+				name="PrzesylkiOutputShortDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychShort_PrzesylkiOutputShortDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoGuidach">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidach"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidach_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidach_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidach_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachPrzesylkiOutputDataFault"
+				name="PrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidach_PrzesylkiOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoGuidachShort">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachShort"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachShortResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachShortPrzesylkiOutputShortDataFault"
+				name="PrzesylkiOutputShortDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_PrzesylkiOutputShortDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachShortOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachShort_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekZaOkres">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekZaOkres"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekZaOkres_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekZaOkresResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekZaOkres_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekZaOkresOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekZaOkres_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekZaOkresPrzesylkiOutputShortDataFault"
+				name="PrzesylkiOutputShortDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekZaOkres_PrzesylkiOutputShortDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzGuidyPrzesylekZaOkres">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzGuidyPrzesylekZaOkres"
+				message="tns:IEpoContract_PobierzGuidyPrzesylekZaOkres_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzGuidyPrzesylekZaOkresResponse"
+				message="tns:IEpoContract_PobierzGuidyPrzesylekZaOkres_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzGuidyPrzesylekZaOkresOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzGuidyPrzesylekZaOkres_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzGuidyPrzesylekZaOkresGuidOutputDataFault"
+				name="GuidOutputDataFault"
+				message="tns:IEpoContract_PobierzGuidyPrzesylekZaOkres_GuidOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzNumeryNadawczePrzesylekZaOkres">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzNumeryNadawczePrzesylekZaOkres"
+				message="tns:IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzNumeryNadawczePrzesylekZaOkresResponse"
+				message="tns:IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzNumeryNadawczePrzesylekZaOkresOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzNumeryNadawczePrzesylekZaOkresNumerNadawczyOutputDataFault"
+				name="NumerNadawczyOutputDataFault"
+				message="tns:IEpoContract_PobierzNumeryNadawczePrzesylekZaOkres_NumerNadawczyOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylek">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylek"
+				message="tns:IEpoContract_PobierzStatusyPrzesylek_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylek_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPrzesylkiOutputDataFault"
+				name="PrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylek_PrzesylkiOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylek_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoNumerachNadawczychXml">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychXml"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychXmlResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychXmlPrzesylkiOutputDataFault"
+				name="PrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_PrzesylkiOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychXmlOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoNumerachNadawczychXml_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoGuidachXml">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachXml"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachXmlResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachXmlOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachXmlPrzesylkiOutputDataFault"
+				name="PrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekPoGuidachXml_PrzesylkiOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekXml">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekXml"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekXml_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekXmlResponse"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekXml_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekXmlPrzesylkiOutputDataFault"
+				name="PrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekXml_PrzesylkiOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekXmlOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzStatusyPrzesylekXml_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoNumerzeNadawczym">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczym"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymResponse"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymHistoriaPrzesylkiOutputDataFault"
+				name="HistoriaPrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_HistoriaPrzesylkiOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczym_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkresResponse"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkresHistoriaPrzesylkiOutputDataExtendFault"
+				name="HistoriaPrzesylkiOutputDataExtendFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_HistoriaPrzesylkiOutputDataExtendFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkresOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoGuidPrzesylki">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylki"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiResponse"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiHistoriaPrzesylkiOutputDataFault"
+				name="HistoriaPrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_HistoriaPrzesylkiOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylki_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoNumerzeNadawczymXml">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymXml"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymXmlResponse"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymXmlOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymXmlHistoriaPrzesylkiOutputDataFault"
+				name="HistoriaPrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoNumerzeNadawczymXml_HistoriaPrzesylkiOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoGuidPrzesylkiXml">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiXml"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiXmlResponse"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiXmlHistoriaPrzesylkiOutputDataFault"
+				name="HistoriaPrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_HistoriaPrzesylkiOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiXmlOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzHistoriePrzesylkiPoGuidPrzesylkiXml_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ImportZbioruEkn">
+			<wsdl:input wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEkn"
+				message="tns:IEpoContract_ImportZbioruEkn_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknResponse"
+				message="tns:IEpoContract_ImportZbioruEkn_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknOutputDataFault"
+				name="OutputDataFault" message="tns:IEpoContract_ImportZbioruEkn_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknImportZbiorEknOutputDataFault"
+				name="ImportZbiorEknOutputDataFault"
+				message="tns:IEpoContract_ImportZbioruEkn_ImportZbiorEknOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ImportZbioruEknBase64">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknBase64"
+				message="tns:IEpoContract_ImportZbioruEknBase64_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknBase64Response"
+				message="tns:IEpoContract_ImportZbioruEknBase64_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknBase64OutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_ImportZbioruEknBase64_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknBase64ImportZbiorEknOutputDataFault"
+				name="ImportZbiorEknOutputDataFault"
+				message="tns:IEpoContract_ImportZbioruEknBase64_ImportZbiorEknOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ImportZbioruEknZip">
+			<wsdl:input wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknZip"
+				message="tns:IEpoContract_ImportZbioruEknZip_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknZipResponse"
+				message="tns:IEpoContract_ImportZbioruEknZip_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknZipImportZbiorEknOutputDataFault"
+				name="ImportZbiorEknOutputDataFault"
+				message="tns:IEpoContract_ImportZbioruEknZip_ImportZbiorEknOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknZipOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_ImportZbioruEknZip_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="NadanieZbioruEknZip">
+			<wsdl:input wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknZip"
+				message="tns:IEpoContract_NadanieZbioruEknZip_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknZipResponse"
+				message="tns:IEpoContract_NadanieZbioruEknZip_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknZipOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_NadanieZbioruEknZip_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknZipNadajZbiorEknOutputDataFault"
+				name="NadajZbiorEknOutputDataFault"
+				message="tns:IEpoContract_NadanieZbioruEknZip_NadajZbiorEknOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="NadanieZbioruEkn">
+			<wsdl:input wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEkn"
+				message="tns:IEpoContract_NadanieZbioruEkn_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknResponse"
+				message="tns:IEpoContract_NadanieZbioruEkn_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_NadanieZbioruEkn_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknNadajZbiorEknOutputDataFault"
+				name="NadajZbiorEknOutputDataFault"
+				message="tns:IEpoContract_NadanieZbioruEkn_NadajZbiorEknOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="NadanieZbioruEknBase64">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknBase64"
+				message="tns:IEpoContract_NadanieZbioruEknBase64_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknBase64Response"
+				message="tns:IEpoContract_NadanieZbioruEknBase64_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknBase64NadajZbiorEknOutputDataFault"
+				name="NadajZbiorEknOutputDataFault"
+				message="tns:IEpoContract_NadanieZbioruEknBase64_NadajZbiorEknOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknBase64OutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_NadanieZbioruEknBase64_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczychResponse"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczychOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczychListaDoreczenPdfOutputDataFault"
+				name="ListaDoreczenPdfOutputDataFault"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych_ListaDoreczenPdfOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzPdfPotwierdzeniaDoreczenPoGuidach">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoGuidach"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoGuidachResponse"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoGuidachOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoGuidachListaDoreczenPdfOutputDataFault"
+				name="ListaDoreczenPdfOutputDataFault"
+				message="tns:IEpoContract_PobierzPdfPotwierdzeniaDoreczenPoGuidach_ListaDoreczenPdfOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczychResponse"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczychOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczychListaDoreczenPdfOutputDataFault"
+				name="ListaDoreczenPdfOutputDataFault"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych_ListaDoreczenPdfOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzXmlPotwierdzeniaDoreczenPoGuidach">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoGuidach"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoGuidachResponse"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoGuidachListaDoreczenPdfOutputDataFault"
+				name="ListaDoreczenPdfOutputDataFault"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_ListaDoreczenPdfOutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoGuidachOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzXmlPotwierdzeniaDoreczenPoGuidach_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzKodyPocztowe">
+			<wsdl:input wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzKodyPocztowe"
+				message="tns:IEpoContract_PobierzKodyPocztowe_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzKodyPocztoweResponse"
+				message="tns:IEpoContract_PobierzKodyPocztowe_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzKodyPocztoweOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzKodyPocztowe_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzKodyPocztoweKodPocztowyOutputDataFault"
+				name="KodPocztowyOutputDataFault"
+				message="tns:IEpoContract_PobierzKodyPocztowe_KodPocztowyOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzListeStatusowPrzesylek">
+			<wsdl:input
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzListeStatusowPrzesylek"
+				message="tns:IEpoContract_PobierzListeStatusowPrzesylek_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzListeStatusowPrzesylekResponse"
+				message="tns:IEpoContract_PobierzListeStatusowPrzesylek_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzListeStatusowPrzesylekOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzListeStatusowPrzesylek_OutputDataFault_FaultMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzListeStatusowPrzesylekStatusPrzesylkiOutputDataFault"
+				name="StatusPrzesylkiOutputDataFault"
+				message="tns:IEpoContract_PobierzListeStatusowPrzesylek_StatusPrzesylkiOutputDataFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="PobierzWersjeApi">
+			<wsdl:input wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzWersjeApi"
+				message="tns:IEpoContract_PobierzWersjeApi_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzWersjeApiResponse"
+				message="tns:IEpoContract_PobierzWersjeApi_OutputMessage" />
+			<wsdl:fault
+				wsaw:Action="http://ms.gov.pl/msepo/IEpoContract/PobierzWersjeApiOutputDataFault"
+				name="OutputDataFault"
+				message="tns:IEpoContract_PobierzWersjeApi_OutputDataFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="EpoWebService" type="tns:IEpoContract">
+		<wsp:PolicyReference URI="#EpoWebService_policy" />
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="PobierzStatusyPrzesylekPoNumerachNadawczych">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczych"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="PrzesylkiOutputDataFault">
+				<soap:fault name="PrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoNumerachNadawczychShort">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychShort"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="PrzesylkiOutputShortDataFault">
+				<soap:fault name="PrzesylkiOutputShortDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoGuidach">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidach"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="PrzesylkiOutputDataFault">
+				<soap:fault name="PrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoGuidachShort">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachShort"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="PrzesylkiOutputShortDataFault">
+				<soap:fault name="PrzesylkiOutputShortDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekZaOkres">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekZaOkres"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="PrzesylkiOutputShortDataFault">
+				<soap:fault name="PrzesylkiOutputShortDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzGuidyPrzesylekZaOkres">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzGuidyPrzesylekZaOkres"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="GuidOutputDataFault">
+				<soap:fault name="GuidOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzNumeryNadawczePrzesylekZaOkres">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzNumeryNadawczePrzesylekZaOkres"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="NumerNadawczyOutputDataFault">
+				<soap:fault name="NumerNadawczyOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylek">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylek"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="PrzesylkiOutputDataFault">
+				<soap:fault name="PrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoNumerachNadawczychXml">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoNumerachNadawczychXml"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="PrzesylkiOutputDataFault">
+				<soap:fault name="PrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekPoGuidachXml">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekPoGuidachXml"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="PrzesylkiOutputDataFault">
+				<soap:fault name="PrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzStatusyPrzesylekXml">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzStatusyPrzesylekXml"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="PrzesylkiOutputDataFault">
+				<soap:fault name="PrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoNumerzeNadawczym">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczym"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="HistoriaPrzesylkiOutputDataFault">
+				<soap:fault name="HistoriaPrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylekZaOkres"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="HistoriaPrzesylkiOutputDataExtendFault">
+				<soap:fault name="HistoriaPrzesylkiOutputDataExtendFault"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoGuidPrzesylki">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylki"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="HistoriaPrzesylkiOutputDataFault">
+				<soap:fault name="HistoriaPrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoNumerzeNadawczymXml">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoNumerzeNadawczymXml"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="HistoriaPrzesylkiOutputDataFault">
+				<soap:fault name="HistoriaPrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzHistoriePrzesylkiPoGuidPrzesylkiXml">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzHistoriePrzesylkiPoGuidPrzesylkiXml"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="HistoriaPrzesylkiOutputDataFault">
+				<soap:fault name="HistoriaPrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ImportZbioruEkn">
+			<soap:operation soapAction="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEkn"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="ImportZbiorEknOutputDataFault">
+				<soap:fault name="ImportZbiorEknOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ImportZbioruEknBase64">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknBase64"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="ImportZbiorEknOutputDataFault">
+				<soap:fault name="ImportZbiorEknOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ImportZbioruEknZip">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/ImportZbioruEknZip"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ImportZbiorEknOutputDataFault">
+				<soap:fault name="ImportZbiorEknOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="NadanieZbioruEknZip">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknZip"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="NadajZbiorEknOutputDataFault">
+				<soap:fault name="NadajZbiorEknOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="NadanieZbioruEkn">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEkn"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="NadajZbiorEknOutputDataFault">
+				<soap:fault name="NadajZbiorEknOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="NadanieZbioruEknBase64">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/NadanieZbioruEknBase64"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NadajZbiorEknOutputDataFault">
+				<soap:fault name="NadajZbiorEknOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoNumerachNadawczych"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="ListaDoreczenPdfOutputDataFault">
+				<soap:fault name="ListaDoreczenPdfOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzPdfPotwierdzeniaDoreczenPoGuidach">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzPdfPotwierdzeniaDoreczenPoGuidach"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="ListaDoreczenPdfOutputDataFault">
+				<soap:fault name="ListaDoreczenPdfOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoNumerachNadawczych"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="ListaDoreczenPdfOutputDataFault">
+				<soap:fault name="ListaDoreczenPdfOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzXmlPotwierdzeniaDoreczenPoGuidach">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzXmlPotwierdzeniaDoreczenPoGuidach"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ListaDoreczenPdfOutputDataFault">
+				<soap:fault name="ListaDoreczenPdfOutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzKodyPocztowe">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzKodyPocztowe"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="KodPocztowyOutputDataFault">
+				<soap:fault name="KodPocztowyOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzListeStatusowPrzesylek">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzListeStatusowPrzesylek"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="StatusPrzesylkiOutputDataFault">
+				<soap:fault name="StatusPrzesylkiOutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="PobierzWersjeApi">
+			<soap:operation
+				soapAction="http://ms.gov.pl/msepo/IEpoContract/PobierzWersjeApi"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OutputDataFault">
+				<soap:fault name="OutputDataFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="EpoService">
+		<wsdl:port name="EpoWebService" binding="tns:EpoWebService">
+			<soap:address location="https://saepo:9023/EpoService.svc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
