@@ -11,6 +11,8 @@ public class CmlheloApplicationTests {
 
 	@Test
 	public void contextLoads() {
+            Double d=Math.random()*1000;
+            String s=String.format("%d", d.intValue());
 	}
 
 }

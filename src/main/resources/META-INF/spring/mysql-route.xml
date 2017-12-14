@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+">
+    
+    <camelContext id="dbMysql-camelContext" xmlns="http://camel.apache.org/schema/spring">
+        <route id="dbMysql">
+            <!-- route starts from the cxf webservice, see camel-cxf.xml for details -->
+            <from id="timerID" uri="timer:wykonajSQL=15s"/>
+            <!--            <setHeader headerName="operationName" id="setHeaderID">
+                <constant>PobierzWersjeApi</constant>
+            </setHeader>-->
+            <to id="dbMysql_log" uri="log:dbMysql"/>
+            <!--<to id="svcID" uri="cxf:bean:versionApiEndpoint"/>-->
+        </route>
+    </camelContext>
+
+</beans>

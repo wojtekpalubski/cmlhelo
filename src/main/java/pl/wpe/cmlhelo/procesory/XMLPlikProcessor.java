@@ -9,6 +9,7 @@ public class XMLPlikProcessor implements Processor {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
+		System.out.println("Zaczynam procesor XMLPlikProcessor");
 		Plik p=exchange.getIn().getBody(Plik.class);
 		p.podniesWersje();
 		p.przetworz();
